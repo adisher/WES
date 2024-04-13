@@ -1,0 +1,271 @@
+<html lang="en">
+
+<head>
+    <title>One 1000</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/user.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- include header -->
+    <nav class="navbar sticky-top navbar-expand-lg white">
+        <!-- Navbar brand -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link p-0 brand" href="/home">
+                    <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="90">
+                </a>
+            </li>
+        </ul>
+    
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars"></i>
+        </button>
+    
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-5">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/home">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/webinar">Webinar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-dark" href="/onlinetraining">Online Training</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/about">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/contact">Contact us</a>
+                </li>
+            </ul>
+            <!-- Links -->
+    
+           <!-- Collapsible content -->
+           <% if (!sess_email){ %>
+            <a class="nav-link" href="/login">Login</a>
+            <a href="/signup" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Get Started</a>
+            <% }  else { %>
+                <a href="/logout" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Logout</a>
+            <% } %>
+        </div>
+    </nav>
+
+    <!-- home page -->
+
+
+    <div class="container-fluid px-5 header-webinar">
+        <div class="row">
+            <i class="fa-solid fa-angle-left fa-lg text-muted px-3"></i>
+            <h5 class="font-weight-bold">Course Details</h5>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <video class="text-dark w-100 h-80" controls>
+                    <source src="uploads/<%= courses.enrolled_courses[0].course_video %>" type="video/mp4">
+                    <source src="uploads/<%= courses.enrolled_courses[0].course_video %>" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="p-1 mt-1">
+                    <h6 class="font-weight-bold mb-3"><%= courses.enrolled_courses[0].course_title %></h6>
+                    <p class="small" style="line-height: 1.5rem;"><%= courses.enrolled_courses[0].course_description %></p>
+
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-12">
+                <div style="background-color: #F8F8F8; border-radius: 8px;" class=" p-3 d-flex justify-content-between">
+                    <span style="color:#017EBE;" class="mt-2 font-weight-bold lead">$<%= courses.enrolled_courses[0].course_price %></span>
+                    <a href="cart?id=<%= courses._id %>" class="btn btn-block w-50"
+                        style="background-color:#017EBE; color: white; border-radius: 15px;">Buy Now</a>
+                </div>
+                <div class="py-3 d-flex justify-content-between">
+                    <audio controls class="w-100">
+                        <source src="uploads/<%= courses.enrolled_courses[0].course_audio %>" type="audio/ogg">
+                        <source src="uploads/<%= courses.enrolled_courses[0].course_audio %>" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <h5 class="py-3 font-weight-bold">Content of the Course</h5>
+                
+                <div id="accordion">
+                    <div class="card shadow-none rounded">
+                        <div class="card-header" style="height: 4rem!important;" id="headingOne">
+                            <div class="mb-0 d-flex justify-content-between">
+                                <span class="mt-2 font-weight-bold">Chapter No 1</span>
+                                <button style="padding: 7px!important;" class="btn btn-link" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fa-solid fa-angle-right fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body" style="background-color: #F8F8F8;">
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-none mt-3">
+                        <div class="card-header" style="height: 4rem!important;" id="headingTwo">
+                            <div class="mb-0 d-flex justify-content-between">
+                                <span class="mt-2 font-weight-bold">Chapter No 2</span>
+                                <button style="padding: 7px!important;" class="btn btn-link collapsed"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    <i class="fa-solid fa-angle-right fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body" style="background-color: #F8F8F8;">
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-none mt-3">
+                        <div class="card-header" style="height: 4rem!important;" id="headingThree">
+                            <div class="mb-0 d-flex justify-content-between">
+                                <span class="mt-2 font-weight-bold">Chapter No 3</span>
+                                <button style="padding: 7px!important;" class="btn btn-link collapsed"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    <i class="fa-solid fa-angle-right fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body" style="background-color: #F8F8F8;">
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="font-small text-white pt-4">
+
+         <!-- Footer Elements -->
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a class="nav-link p-0" href="/home">
+                        <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="140">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Quick links</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a class="text-white-50 small" href="/home">Home</a></li>
+                        <li><a class="text-white-50 small" href="/about">About</a></li>
+                        <li><a class="text-white-50 small" href="/signup">Get started</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Join me on social media</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.facebook.com/WESTrainingandConsulting"><i class="fa-brands fa-facebook-f mr-2"></i>WESTrainingandConsulting</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.instagram.com/WEStc/"><i class="fa-brands fa-instagram mr-2"></i>WEStc</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.linkedin.com/in/WES/?originalSubdomain=ca"><i class="fa-brands fa-linkedin mr-2"></i>WES</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="WES"><i class="fa-brands fa-youtube mr-2"></i>WES Training & Consulting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center">
+                <!-- Copyright -->
+                <div class="footer-copyright px-2 py-2">2022, Copyright, all rights reserved</div>
+                <!-- Copyright -->
+            </div>
+    
+        
+        </div>
+        <!-- Footer Elements -->
+
+    </footer>
+    <!-- Footer -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Add minus icon for collapse element which
+            // is open by default
+            $(".collapse.show").each(function () {
+                $(this).prev(".card-header").find(".fa-solid")
+                    .addClass("fa-angle-down").removeClass("fa-angle-right");
+            });
+            // Toggle plus minus icon on show hide
+            // of collapse element
+            $(".collapse").on('show.bs.collapse', function () {
+                $(this).prev(".card-header").find(".fa-solid")
+                    .removeClass("fa-angle-right").addClass("fa-angle-down");
+            }).on('hide.bs.collapse', function () {
+                $(this).prev(".card-header").find(".fa-solid")
+                    .removeClass("fa-angle-down").addClass("fa-angle-right");
+            });
+        });
+    </script>
+</body>
+
+</html>

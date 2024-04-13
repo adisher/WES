@@ -1,0 +1,288 @@
+
+<!-- include header -->
+<%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper bg-color py-5 px-2">
+
+        <section class="content">
+          <div class="py-5 container" style="background-color:#fff; border-radius:10px;">
+  
+            <div class="row d-flex">
+              <div class="col-lg-9 my-2">
+                <div class="d-flex">
+                  <div class="col-lg-2">
+                    <img src="images/Ellipse-2 (2).png" class="rounded-circle img-fluid">
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="hidden" id="companyID" value="<%= company._id %>" />
+                    <h6 class="small text-muted">Name</h6>
+                    <h6 class="mb-4 small font-weight-bold"><%= company.name %></h6>
+                    <h6 class="small text-muted">Location</h6>
+                    <h6 class="mb-3 small font-weight-bold"><%= company.location %></h6>
+                  </div>
+                  <div class="col-lg-3 ml-lg-5">
+                    <h6 class="small text-muted">Company Name</h6>
+                    <h6 class="mb-3 small font-weight-bold"><%= company.company_name %></h6>
+                    <h6 class="small text-muted">Email</h6>
+                    <h6 class="mb-3 small font-weight-bold"><%= company.email %></h6>
+                  </div>
+  
+                </div>
+              </div>
+  
+              <div class="col-lg-3 my-2">
+                <div class="text-right mb-5">
+                  <% if(company.status != 'suspend') { %>
+                    <a class="btn btn-sm" style="color: white; border-radius: 22px; background-color: #3CB179;"
+                    name="active">Active</a>
+                    <% } else{ %>
+                      <a class="btn btn-sm" style="color: white; border-radius: 22px; background-color: #FF3F3F;"
+                      name="active">Suspended</a>
+                      <% } %>
+                </div>
+                <div class="text-right">
+                  <% if(company.status != 'suspend') { %>
+                    <a class="nav-link small text-red" data-toggle="modal" data-target="#suspenduser" id="suspend-id" data-id="<%= company._id %>" href="">Suspend</a>
+                    <% } else{ %>
+                      <a class="nav-link small text-red" data-toggle="modal" data-target="#activeuser" id="active-id" data-id="<%= company._id %>" href="">Active</a>
+                      <% } %>
+                </div>
+              </div>
+  
+            </div>
+  
+          </div>
+  
+          <div class="my-4 container align-items-center">
+            <div class="row d-flex justify-content-between align-items-center">
+              <h6 class="font-weight-bold">Assigned Courses</h6>
+              <!-- <a href="assignedcourses.html" class="btn btn-md"
+                style="color: white; border-radius: 8px; background-color: #017EBE;">Assigned Courses</a> -->
+            </div>
+          </div>
+          <div class="my-4 container align-items-center">
+            <div class="row">
+              <% company.enrolled_courses.forEach(function(course) { %>
+              <div class="col-lg-6">
+                <div class="card mb-3" style="background-color: #FFFFFF; max-width: 500px; box-shadow: none;">
+                  <div class="row no-gutters">
+                    <div class="col-md-4 pl-3 pt-4">
+                      <img src="images/Rectangle-11.png" class="img-fluid" alt="course-img">
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card-body">
+                        <h5 class="card-title font-weight-bold"><%= course.course_title %></h5>
+                        <p class="card-text font-weight-bold"><%= company.company_name %></p>
+                        <p class="card-text font-weight-bold"><small><%= moment(company.createdAt).format('MMM DD YYYY') %></small></p>
+                      </div>
+                    </div>
+                    <div class="mt-3 ml-lg-4 round">
+                      <span class="fa-stack mt-3">
+                        <i class="fa fa-circle fa-stack-2x" style="color: #A5E0FF"></i>
+                        <a data-toggle="modal" data-target="#deleteuser" id="del-id" data-id="<%= course._id %>" href=""><i class="fa fa-trash fa-stack-1x"></i></a>
+                    </span>
+                    </div>
+                    <!-- <input type="checkbox" class="mt-3 ml-5 checkbox-tick"/> -->
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+            </div>
+          </div>
+  
+        </section>
+  
+  
+      </div>
+
+</div>
+<!-- suspend user -->
+<div class="modal fade" id="suspenduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content rounded text-center p-3">
+    <div class="col-lg-12 text-center">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+      <img src="images/suspend.png" alt="blockuser" class="img-fluid mt-5" />
+    </div>
+      <div class="text-center d-flex flex-row mt-5">
+          <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Suspend this User?</h5>
+      </div>
+      <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+          <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+          <a href="" type="button" id="suspend" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #FF3F3F;">Yes, Suspend</a>
+      </div>
+  </div>
+  </div>
+</div>
+
+<!-- active user -->
+<div class="modal fade" id="activeuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content rounded text-center p-3">
+    <div class="col-lg-12 text-center">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+      <img src="images/suspend.png" alt="blockuser" class="img-fluid mt-5" />
+    </div>
+      <div class="text-center d-flex flex-row mt-5">
+          <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Active this User?</h5>
+      </div>
+      <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+          <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+          <a href="" type="button" id="active" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #3CB179;">Yes, Active</a>
+      </div>
+  </div>
+  </div>
+</div>
+
+<!-- delete user -->
+<div class="modal fade" id="deleteuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+  <div class="modal-content rounded text-center p-3">
+    <div class="col-lg-12 text-center">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+      <img src="images/delete.png" alt="blockuser" class="img-fluid mt-5" />
+    </div>
+      <div class="text-center d-flex flex-row mt-5">
+          <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Remove this Course?</h5>
+      </div>
+      <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+          <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+          <a href="" type="button" id="delete" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #FF3F3F;">Yes, Remove</a>
+      </div>
+  </div>
+  </div>
+</div>
+
+<div class="modal fade" id="updateModal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class=" mt-2 ml-2">
+        <h5 class="modal-title w-100" id="exampleModalLongTitle">Edit Profile</h5>
+      </div>
+      <div class="modal-body">
+        <div class="tabbable">
+          <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active pull-right mr-2"><a href="#tab1" data-toggle="tab">Setting</a></li>
+            <li class="pull-right ml-2"><a href="#tab2" data-toggle="tab">Contact Us</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <br>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Notification</label>
+                  <label class="switch d-flex " for="checkbox">
+                    <input type="checkbox" checked id="checkbox" />
+                    <div class="slider round"></div>
+                  </label> 
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Notification</label>
+                  <label class="switch d-flex " for="checkbox">
+                    <input type="checkbox" checked id="checkbox" />
+                    <div class="slider round"></div>
+                  </label> 
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Notification</label>
+                  <label class="switch d-flex " for="checkbox">
+                    <input type="checkbox" checked id="checkbox" />
+                    <div class="slider round"></div>
+                  </label> 
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Notification</label>
+                  <label class="switch d-flex " for="checkbox">
+                    <input type="checkbox" checked id="checkbox" />
+                    <div class="slider round"></div>
+                  </label> 
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Notification</label>
+                  <label class="switch d-flex " for="checkbox">
+                    <input type="checkbox" checked id="checkbox" />
+                    <div class="slider round"></div>
+                  </label> 
+              </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <br>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Phone Number</label>
+                <label class="form-check-label">+92 312 999999</label>
+                  
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Email</label>
+                <label class="form-check-label">abcd@gmail.com</label>
+                  
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <label class="form-check-label">Address</label>
+                <label class="form-check-label">Example Address</label>
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ./wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        // is open by default
+        $('#successModal').modal('show');
+
+         // is open by default
+         $('#successModal').modal('show');
+
+    $("#changeButton").click(function() {
+      $("#updateModal").modal();
+    });
+    $('.editable ul').on('click', 'li', function() {
+      if ($(this).hasClass('li_selected')) {
+        $(this).removeClass('li_selected');
+      } else {
+        $(this).addClass('li_selected');
+      }
+    });
+
+    $('#suspenduser').on('show.bs.modal', function(event){
+      console.log('suspend');
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var suspendID = button.attr('data-id');
+      console.log('suspendID: ', suspendID);
+      var modal = $(this)
+      modal.find('#suspend').attr('href', `/suspend?companyUserID=${suspendID}`);
+    })
+
+    $('#activeuser').on('show.bs.modal', function(event){
+      console.log('active');
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var activeID = button.attr('data-id');
+      console.log('activeID: ', activeID);
+      var modal = $(this)
+      modal.find('#active').attr('href', `/active?companyUserID=${activeID}`);
+    })
+
+            const deleteID = $('#del-id').attr('data-id');
+            const companyID = $('#companyID').val();
+          console.log('deleteID: ', deleteID);
+          $('#delete').attr('href', `/delete?removeCourseID=${deleteID}&companyID=${companyID}`);
+
+    });
+</script>
+</body>
+</html>

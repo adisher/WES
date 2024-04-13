@@ -1,0 +1,173 @@
+
+<!-- include header -->
+<%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper bg-color py-5">
+
+        <section class="content">
+    
+            <div class="py-2 container"
+                style="background-color:#fff; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h6 class="font-weight-bold pt-2 pl-2">Company Details</h6>
+            </div>
+    
+            <form action="/api/company" method="POST">
+                <div class="mt-1 py-4 container" style="background-color:#fff;">
+                        <div class="row">
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Name</label>
+                                    <input class="form-control input-sm" type="text" name="name" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Email</label>
+                                    <input class="form-control input-sm" id="inputsm" type="text" name="email" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Company Name</label>
+                                    <input class="form-control input-sm" id="inputsm" type="text" name="company" placeholder="Company Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Location</label>
+                                    <input class="form-control input-sm" id="inputsm" type="text" name="location" placeholder="Country">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+    
+                <div class="mt-1 py-2 container" style="background-color:#fff;">
+                    <h6 class="font-weight-bold pt-2 pl-2">Courses</h6>
+                </div>
+                <div class="mt-1 py-4 container" style="background-color:#fff;">
+                    <div class="row" id="selectedCourse">
+                        <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                            <div class="form-group">
+                                <label for="inputsm">Courses</label>
+                                <div id="selectCourseDiv">
+                                    <select id="selectCourse" class="form-control" aria-label="Default select example">
+                                        <option value="selected" selected>Select</option>
+                                        <% courses.forEach(function(course) { %>
+                                        <option value="<%= course._id %>"><%= course.course_title %></option>
+                                        <%  }) %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-2 addplusicon" style="margin-top: 3.6rem;">
+                            <label><i class="fa-solid fa-circle-plus text-success"></i></label>
+                        </div> -->
+                        <div class="container ml-5 mr-5 pl-1 pr-1">
+                            <hr>
+                        </div>
+                        
+                        <!-- Selected courses goes here -->
+                                        
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-6 pl-4 pr-5 ml-3 mt-3 mb-3">
+                            <button class="btn" type="submit" style="border-radius: 5px;width: 12rem; background-color: #3CB179; color: white;">Add Company</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    
+        </section>
+    
+    </div>
+
+</div>
+
+<!-- success modal -->
+<% if (message != ''){ %>
+    <div class="modal fade py-3" id="successModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa-solid fa-circle-xmark mr-2 text-danger"></i>
+                    <%= message %>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+<!-- ./wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#successModal').modal('show');
+
+        var course = '';
+
+        // dynamic select
+        $(".fa-circle-plus").click(function () {
+            $("#selectCourseDiv").append('<select id="selectCourse" class="form-control mt-3" aria-label="Default select example" name="course">'+
+                                        '<option value="selected" selected>Select</option>'+
+                                        '<% courses.forEach(function(course) { %>'+
+                                        '<option id="preSelectedCourse" value="<%= course._id %>"><%= course.course_title %></option>'+
+                                        '<%  }) %>'+
+                                    '</select>');
+        });
+
+        var preSelectedCourse = $('#preSelectedCourse').val();
+            console.log("preSelectedCourse: ", preSelectedCourse);
+
+        $('#selectCourse').change(function(event){ 
+            event.preventDefault();
+            var course = $(this).val();
+            console.log("crs: ", course);
+            var port = '<%= process.env.APP_PORT %>'
+
+            $.ajax({
+                url : `http://localhost:`+port+`/api/courses`, 
+                method : "GET",
+                contentType: "application/json",
+                data : {id: course},
+
+                success: function (data, status, xhr) {
+                    console.log("data: ", data);
+                    if(preSelectedCourse !== data._id){
+                        
+                        $("#selectedCourse").append('<div class="col-lg-3" id="appendCourse" style="margin-left: 2rem;">'+
+                                            '<div class="col-lg-12 p-3 mb-3" style="width: 200px; height: 79px; background-color: #A5E0FF; border-radius:5px;">'+
+                                            '<div class="row align-items-center justify-content-between" >'+
+                                            '<div class="col-lg-6 col-md-6 col-sm-6 ml-2">'+
+                                            '<input name="course[]" id="courseSelected" type="hidden" value="'+data._id+'"/>'+
+                                            '<div class="row font-weight-bold mb-1 text-info">'+data.course_title+'</div>'+
+                                            '<div class="row mb-2"><h6 class="small text-muted ">'+data.course_credit+' credits</h6></div></div>'+
+                                            '<div class="mb-5"><a id="courseID"><i class="fa fa-trash fa-stack-1x ml-5 mb-5"></i></a></div>'+
+                                            '</div></div></div>');
+
+                        $('#courseSelected').val(data._id);
+                        $('#courseID').click(function () {
+                            console.log('click')
+                            $('#appendCourse').remove();
+                            $('#selectCourse option[value="selected"]').prop('selected', true);
+                        })
+                    }else {
+                        alert('Course Already Selected!')
+                    }
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    console.log("failed: ", errorMessage);
+                }
+            })          
+        });
+
+    });
+</script>
+</body>
+</html>

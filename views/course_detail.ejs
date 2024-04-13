@@ -1,0 +1,171 @@
+<!-- include header -->
+<%- include ('include/sidebar') %>
+  <!-- /include header -->
+
+
+  <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper bg-color py-5">
+
+    <section class="content ml-4">
+        <div class="row">
+            <i class="fa-solid fa-angle-left fa-lg text-muted px-3"></i>
+            <h5 class="font-weight-bold">Course Details</h5>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <video class="text-dark w-100 h-80" controls id="video">
+                    <source src="uploads/<%= courses.course_video %>" type="video/mp4">
+                    <source src="uploads/<%= courses.course_video %>" type="video/ogg">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="p-1 mt-1">
+                    <h6 class="font-weight-bold mb-3"><%= courses.course_title %></h6>
+                    <p class="small" style="line-height: 1.5rem;"><%= courses.course_description %></p>
+
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-12">
+                <!-- <div class="d-flex justify-content-center">
+                    
+                    <a href="" class="btn btn-block" 
+                        style="background-color:#F4AE1F; color: white; border-radius: 8px;">Edit Course</a>
+                </div> -->
+                <div class="py-3 d-flex justify-content-between">
+                    <audio controls class="w-100">
+                        <source src="uploads/<%= courses.course_audio %>" type="audio/ogg">
+                        <source src="uploads/<%= courses.course_audio %>" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <h5 class="py-3 font-weight-bold">Content of the Course</h5>
+                
+                <div id="accordion">
+                    <div class="card shadow-none rounded">
+                        <div class="card-header" style="height: 4rem!important;" id="headingOne">
+                            <div class="mb-0 d-flex justify-content-between">
+                                <span class="mt-2 font-weight-bold">Module 1</span>
+                                <button style="padding: 7px!important;" class="btn btn-link" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fa-solid fa-angle-right fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body" style="background-color: #F8F8F8;">
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1"><%= courses.course_module_title %></span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1"><%= courses.course_module_title %></span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1"><%= courses.course_module_title %></span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-none mt-3">
+                        <div class="card-header" style="height: 4rem!important;" id="headingTwo">
+                            <div class="mb-0 d-flex justify-content-between">
+                                <span class="mt-2 font-weight-bold">Module 2</span>
+                                <button style="padding: 7px!important;" class="btn btn-link collapsed"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    <i class="fa-solid fa-angle-right fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body" style="background-color: #F8F8F8;">
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card shadow-none mt-3">
+                        <div class="card-header" style="height: 4rem!important;" id="headingThree">
+                            <div class="mb-0 d-flex justify-content-between">
+                                <span class="mt-2 font-weight-bold">Module 3</span>
+                                <button style="padding: 7px!important;" class="btn btn-link collapsed"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    <i class="fa-solid fa-angle-right fa-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body" style="background-color: #F8F8F8;">
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                                <div class="mb-1 d-flex text-muted justify-content-between">
+                                    <span class="mt-1">Lorem Ipsum</span>
+                                    <i class="fa-solid fa-play mr-3" style="padding: 7px!important;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+    </div>
+
+  </div>
+  <!-- ./wrapper -->
+  </body>
+
+  <!-- <script type="text/javascript">
+    $(document).ready(function () {
+        // is open by default
+        $('#successModal').modal('show');
+
+        //audio
+        let audio = $('#audio')
+        let playState = 'play';
+
+        // if(playIconContainer){
+
+            $('.player-button').on('click', () => {
+                console.log("play");
+                if(playState === 'play') {
+                    audio[0].play();
+                    
+                    playState = 'pause';
+                } else {
+                    audio[0].pause();
+                    
+                    playState = 'play';
+                }
+            });
+        // }
+
+    });
+</script> -->
+
+  </html>

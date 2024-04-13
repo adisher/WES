@@ -1,0 +1,47 @@
+
+<!-- include header -->
+<%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+      <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper bg-color py-5">
+    
+    <section class="content">
+        <div class="pb-5 pt-3 container px-4" style="background-color:#fff; border-radius:10px;"> 
+            <h6 class="font-weight-bold">Edit Profile</h6>
+            <hr class="font-weight-bold mx-n4"/>
+                <form action="/api/updateProfile/<%= user[0]._id %>" method="POST">
+                    <div class="row">
+                        <div class="col-lg-6 my-2">
+                            <label for="Full Name" class="font-weight-bold small">Full Name</label>
+                            <input type="text" name="name" id="Full Name" placeholder="Full Name" value="<%= user[0].name %>" class="form-control mb-3" style="width:80%">
+                            <label for="Phone Number" class="font-weight-bold my-2 small">Phone Number</label>
+                            <input type="text" name="number" id="Phone Number" placeholder="Phone Number" value="<%= user[0].phone %>" class="form-control mb-3" style="width:80%">
+                        </div>
+                        
+                        <div class="col-lg-6 my-2">
+                            <label for="Email" class="font-weight-bold small">Email</label>
+                            <input type="text" name="email" id="Email" placeholder="Email" value="<%= user[0].email %>" class="form-control mb-3" style="width:80%">
+                            <label for="Location" class="font-weight-bold my-2 small">Location</label>
+                            <input type="text" name="location" id="Location" placeholder="Location" value="<%= user[0].location %>" class="form-control mb-3" style="width:80%">
+                        </div>
+                        <div class="col-lg-6">
+                            <button type="submit" class="btn btn-md my-5"
+                            style="background-color:#3CB179; color: white; border-radius: 8px;" name="update">Update Now</button>
+                        </div>
+                        
+                    </div>
+                </form>
+            
+        </div>
+        
+    </section>
+
+    
+  </div>
+
+</div>
+<!-- ./wrapper -->
+</body>
+</html>

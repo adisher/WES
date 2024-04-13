@@ -1,0 +1,186 @@
+.navcard{
+    padding-left: 1rem;
+    padding-right: 5rem;
+    padding-bottom: 1.2rem;
+    padding-top: 1.2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    height: auto;
+    width: 20%;
+}
+
+/* enable absolute positioning */
+.uploaddoc{
+    position: relative;
+    top: -20px;
+}
+
+/* select Thumbnail File */
+.selectThumbnail {
+    color: transparent;
+  }
+  .selectThumbnail::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .selectThumbnail::before {
+    content: 'Upload Thumbnail';
+    color: black;
+    display: inline-block;
+    background: #FFE9BC;
+    border-radius: 3px;
+    padding: 0.7rem 2.5rem;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    position: relative;
+    top:50%;
+  }
+
+/* select PDF File */
+.selectPDF {
+    color: transparent;
+  }
+  .selectPDF::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .selectPDF::before {
+    content: 'Upload PDF';
+    color: black;
+    display: inline-block;
+    background: #FFE9BC;
+    border-radius: 3px;
+    padding: 0.7rem 2.5rem;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    position: relative;
+    top:50%;
+  }
+  .selectAudio::before {
+    content: 'Upload Audio';
+    color: black;
+    display: inline-block;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    position: relative;
+    top:50%;
+    left:25%
+  }
+
+  
+  .selectVideo::before {
+    content: 'Upload Video';
+    color: black;
+    display: inline-block;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    position: relative;
+    top:50%;
+    left:25%
+  }
+
+
+  input.selectThumbnail, input.selectPDF{
+      background-color: transparent!important;
+  }
+
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+}
+audio::-webkit-media-controls-panel {
+    background-color: #A5E0FF;
+  }
+  audio{
+    background-color: #A5E0FF;
+    border-radius: 8px!important;
+  }
+.errspan {
+    float: right;
+    margin-right: 55%;
+    margin-top: -20px;
+    top: 30%;
+    position: relative;
+    z-index: 2;
+    color: rgb(0, 0, 0);
+}
+
+.video-container {
+    width: 640px;
+    border-radius: 4px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+.video-container .video-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-container video {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+.play-button-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+.play-button-wrapper #circle-play-b {
+    cursor: pointer;
+    pointer-events: auto;
+}
+.play-button-wrapper #circle-play-b svg {
+    width: 100px;
+    height: 100px;
+    fill: #fff;
+    stroke: #fff;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.audiodeletebt{
+    position: absolute;
+    top: -50px;
+}
+
+@media (min-width: 320px) and (max-width: 679px) {
+    .deleteicon{
+        position: absolute;
+        left: 150px;
+        bottom: 10px;
+    }
+    .addplusicon{
+        margin-top: 2px;
+        margin-left: 10px;
+    }
+  }

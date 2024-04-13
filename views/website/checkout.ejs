@@ -1,0 +1,194 @@
+<html lang="en">
+
+<head>
+    <title>One 1000</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" type="text/css" href="https://www.paypalobjects.com/webstatic/en_US/developer/docs/css/cardfields.css"/>
+    <script src="https://www.paypal.com/sdk/js?components=buttons,hosted-fields&client-id=<%= clientId %>"
+    data-client-token="<%= clientToken %>"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+   <!-- include header -->
+   <nav class="navbar sticky-top navbar-expand-lg white">
+    <!-- Navbar brand -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link p-0 brand" href="/home">
+                <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="90">
+            </a>
+        </li>
+    </ul>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-5">
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/userDashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/home">Home
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/webinar">Webinar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active text-dark" href="/onlinetraining">Online Training</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/about">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/contact">Contact us</a>
+            </li>
+        </ul>
+        <!-- Links -->
+
+        <!-- Collapsible content -->
+        <% if (!sess_email){ %>
+            <a class="nav-link" href="/login">Login</a>
+            <a href="/signup" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Get Started</a>
+            <% }  else { %>
+                <a href="/logout" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Logout</a>
+            <% } %>
+    </div>
+</nav>
+
+<!-- <form action="/api/checkout/<%= sess_id %>" method="POST"> -->
+    <div class="container-fluid px-5 header-webinar">
+        <div class="row">
+            <i class="fa-solid fa-angle-left fa-lg text-muted px-3"></i>
+            <h5 class="font-weight-bold">Checkout</h5>
+        </div>
+        <div class="row">
+            <div class="col-lg-7 col-12">
+                <div class="col-lg-12 p-4" style="border: 1px solid black; border-radius: 8px;">
+
+                    <form id="card-form">
+                        <label for="Account Holder Name" class="font-weight-bold">Account Holder Name</label>
+                        <input type="text" name="name" id="card-holder-name" placeholder="Account Holder Name" class="form-control mb-3">
+
+                        <label for="card-number" class="font-weight-bold my-2">Card Number</label>
+                        <div id="card-number" class="form-control card_field mb-3"></div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 mb-3">
+                                <div class="form-group">
+                                    <label for="expiration-date" class="font-weight-bold">Expiration Date</label>
+                                    <div id="expiration-date" class="form-control input-sm card_field"></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+
+                                    <label for="cvv" class="font-weight-bold">CVV</label>
+                                    <div id="cvv" class="form-control input-sm card_field"></div>
+                                    <input type="hidden" name="enrolled_courses" id="enrolled_courses" value="<%= courses.enrolled_courses[0]._id %>" class="form-control input-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn my-5 btn-block" id="submit" value="submit"
+                                style="background-color:#017EBE; color: white; border-radius: 15px;" name="buy">Confirm</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                    
+            </div>
+            <div class="col-lg-5 col-12">
+                <div class="col-lg-12 px-3 py-4" style="background-color: #017EBE; color:#fff; border-radius: 8px;">
+                    <img class="img-fluid card-img-top" src="images/Rectangle-11c.png" alt="checkout-image" />
+                    <div class="p-1 mt-1">
+                        <div class="d-flex justify-content-between bg-transparent border-top-0 font-weight-bold">
+                            <div class="views">
+                                <h6 class="font-weight-bold"><%= courses.enrolled_courses[0].course_title %></h6>
+                                <input type="hidden" value="<%= courses.enrolled_courses[0].course_title %>" name="item">
+                            </div>
+                            <div class="stats">
+                                <span>$<%= courses.enrolled_courses[0].course_price %></span>
+                                <input type="hidden" value="<%= courses.course_price %>" name="price">
+                            </div>
+                        </div>
+                        <p class="small"><%= courses.enrolled_courses[0].course_description %></p>
+                        <p class="small font-weight-bold"><%= courses.company_name %></p>
+                        <input type="hidden" value="<%= courses._id %>" name="company_id" id="company_id"/>
+                        <p class="small"><%= moment(courses.createdAt).format('MMM DD YYYY') %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="font-small text-white pt-4">
+
+        <!-- Footer Elements -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a class="nav-link p-0" href="/home">
+                        <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="140">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Quick links</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a class="text-white-50 small" href="/home">Home</a></li>
+                        <li><a class="text-white-50 small" href="/about">About</a></li>
+                        <li><a class="text-white-50 small" href="/signup">Get started</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Join me on social media</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.facebook.com/WESTrainingandConsulting"><i class="fa-brands fa-facebook-f mr-2"></i>WESTrainingandConsulting</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.instagram.com/WEStc/"><i class="fa-brands fa-instagram mr-2"></i>WEStc</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.linkedin.com/in/WES/?originalSubdomain=ca"><i class="fa-brands fa-linkedin mr-2"></i>WES</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="WES"><i class="fa-brands fa-youtube mr-2"></i>WES Training & Consulting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center">
+                <!-- Copyright -->
+                <div class="footer-copyright px-2 py-2">2022, Copyright, all rights reserved</div>
+                <!-- Copyright -->
+            </div>
+    
+        
+        </div>
+        <!-- Footer Elements -->
+
+
+    </footer>
+    <!-- Footer -->
+    <script src="js/app.js?id=<%= sess_id %>" id="script_id"></script>
+</body>
+
+</html>

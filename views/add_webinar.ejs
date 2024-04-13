@@ -1,0 +1,99 @@
+<!-- include header -->
+<%- include ('include/sidebar') %>
+  <!-- /include header -->
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper bg-color py-5">
+
+    <section class="content">
+
+        <div class="py-2 container"
+            style="background-color:#fff; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+            <h6 class="font-weight-bold pt-2 pl-2">Webinar Details</h6>
+        </div>
+
+        <div class="mt-1 py-4 container" style="background-color:#fff;  border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <form action="/api/webinars" method="POST">
+                <div class="row">
+                    <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                        <div class="form-group">
+                            <label for="inputsm">Title</label>
+                            <input class="form-control input-sm" type="text" name="title" placeholder="Title">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                        <div class="form-group">
+                            <label for="inputsm">Category</label>
+                            <select name="category" class="form-control" aria-label="Default select example">
+                                <option selected disabled>Select Category</option>
+                                <option value="Live Now">Live Now</option>
+                                <option value="Upcoming">Upcoming</option>
+                                <option value="Pre-Recorded">Pre-Recorded</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                        <div class="form-group">
+                            <label for="inputsm">Date</label>
+                            <input class="form-control input-sm" type="date" name="date" placeholder="Date">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                        <div class="form-group">
+                            <label for="inputsm">Time</label>
+                            <input class="form-control input-sm" type="time" name="time" placeholder="Time">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                        <div class="form-group">
+                            <label for="inputsm">Link</label>
+                            <input class="form-control input-sm" type="text" name="link" placeholder="https://demo.com">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pl-4 pr-5 mt-3 mb-3">
+                    <button class="btn" type="submit" style="border-radius: 5px;width: 12rem; background-color: #3CB179; color: white;">Add Now</button>
+                </div>
+            </form>
+        </div>
+
+        
+
+    </section>
+
+</div>
+
+  </div>
+  <!-- ./wrapper -->
+  <!-- success modal -->
+  <% if (message != ''){ %>
+    <div class="modal fade py-3" id="successModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa-solid fa-circle-xmark mr-2 text-danger"></i>
+                    <%= message %>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+        <!-- end success modal -->
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        // is open by default
+        $('#successModal').modal('show');
+
+    });
+</script>
+
+  </html>

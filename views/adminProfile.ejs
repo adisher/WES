@@ -1,0 +1,57 @@
+
+<!-- include header -->
+<%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+      <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper bg-color py-5">
+    
+    <section class="content">
+        <div class="py-5 container" style="background-color:#fff; border-radius:10px;"> 
+
+            <div class="row d-flex">
+                <div class="col-lg-9 my-2">
+                    <div class="d-flex">
+                        <div class="col-lg-2">
+                            <img src="images/Ellipse-2.png" class="rounded-circle img-fluid">
+                        </div>
+                        <div class="col-lg-2">
+                            <h6 class="small text-muted">Name</h6>
+                            <h6 class="mb-4 small font-weight-bold"><%= user[0].name %></h6>
+                            <h6 class="small text-muted">Location</h6>
+                            <h6 class="mb-3 small font-weight-bold"><%= user[0].location %></h6>
+                        </div>
+                        <div class="col-lg-3">
+                            <h6 class="small text-muted">Phone Number</h6>
+                            <h6 class="mb-4 small font-weight-bold"><%= user[0].phone %></h6>
+                            <h6 class="small text-muted">Email</h6>
+                            <h6 class="mb-3 small font-weight-bold"><%= user[0].email %></h6>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 my-2">
+                    <div class="text-right mb-5">
+                        <a class="btn btn-sm" style="color: white; border-radius: 22px; background-color: #3CB179;" name="active">Active</a>
+                    </div>
+                        <div class="row d-flex justify-content-right">
+                            <a href="/changePassword" class="nav-link small text-blue">Change Password</a>
+                            <a href="/editProfile" class="nav-link small text-blue">Edit Profile</a>
+                        </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </section>
+
+    
+  </div>
+
+</div>
+<!-- ./wrapper -->
+</body>
+</html>

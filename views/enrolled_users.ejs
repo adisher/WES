@@ -1,0 +1,334 @@
+<!-- include header -->
+<%- include ('include/sidebar') %>
+  <!-- /include header -->
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper bg-color py-5">
+    
+    <section class="content">
+        <div class="container d-flex justify-content-between">
+            <!-- SEARCH FORM -->
+            <form class="form-inline">
+                <div class="form-group has-search">
+                    <span class="fa fa-search form-control-feedback"></span>
+                    <input type="text" class="form-control " placeholder="Search">
+                  </div>
+            </form>
+            <!-- <a href="addstudent.html" class="btn" style="border-radius: 5px; background-color: #3CB179; color: white;">Add New Student</a> -->
+        </div>
+        <div class="container mt-4">
+            <table class="table">
+                <thead>                  
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Status</th>
+                    <th class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% var i=1; users.forEach(function(user) { %>
+                    <tr>
+                        <td><%= i %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone %></td>
+                        <td class="text-success"><%= user.status %></td>
+                        <td class="text-center">
+                            <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" role="button">
+                                <img src="images/icons8_more_96px.png" style="width:20px;" class="mt-n3">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" style="width:7%!important;" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/enrolled_user?id=<%= user._id %>">View</a>
+                                <% if(user.status != 'block') { %>
+                                  <a class="dropdown-item" data-toggle="modal" data-target="#blockuser" id="block-id" data-id="<%= user._id %>" href="">Block</a>
+                                  <% } else{ %>
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#unblockuser" id="unblock-id" data-id="<%= user._id %>" href="">Unblock</a>
+                                  <% } if(user.status != 'suspend') { %>
+                                  <button class="dropdown-item" data-toggle="modal" data-target="#suspenduser" id="suspend-id" data-id="<%= user._id %>" href="">Suspend</button>
+                                  <% } else{ %>
+                                    <button class="dropdown-item" data-toggle="modal" data-target="#activeuser" id="active-id" data-id="<%= user._id %>" href="">Active</button>
+                                    <% } %>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#deleteuser" id="del-id" data-id="<%= user._id %>" href="">Delete</a>
+                            </div>
+                        </td>
+                    </tr>  
+                    <%  i++; }) %>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    
+  </div>
+
+  </div>
+  <!-- ./wrapper -->
+  <!-- success modal -->
+  <% if (message != ''){ %>
+    <div class="modal fade py-3" id="successModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <i class="fa-solid fa-circle-check mr-2 text-success"></i>
+                    <%= message %>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>
+        <!-- end success modal -->
+  </body>
+  <!-- block user -->
+  <div class="modal fade" id="blockuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded text-center p-3">
+      <div class="col-lg-12 text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <img src="images/blockuser.png" alt="blockuser" class="img-fluid mt-5" />
+      </div>
+        <div class="text-center d-flex flex-row mt-5">
+            <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to block this User?</h5>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+            <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+            <a href="" type="button" id="block" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #FF3F3F;">Yes, Block</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- unblock user -->
+  <div class="modal fade" id="unblockuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded text-center p-3">
+      <div class="col-lg-12 text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <img src="images/blockuser.png" alt="blockuser" class="img-fluid mt-5" />
+      </div>
+        <div class="text-center d-flex flex-row mt-5">
+            <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to unblock this User?</h5>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+            <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+            <a href="" type="button" id="unblock" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #3CB179;">Yes, Unblock</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- suspend user -->
+  <div class="modal fade" id="suspenduser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded text-center p-3">
+      <div class="col-lg-12 text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <img src="images/suspend.png" alt="blockuser" class="img-fluid mt-5" />
+      </div>
+        <div class="text-center d-flex flex-row mt-5">
+            <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Suspend this User?</h5>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+            <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+            <a href="" type="button" id="suspend" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #FF3F3F;">Yes, Suspend</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- active user -->
+  <div class="modal fade" id="activeuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded text-center p-3">
+      <div class="col-lg-12 text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <img src="images/suspend.png" alt="blockuser" class="img-fluid mt-5" />
+      </div>
+        <div class="text-center d-flex flex-row mt-5">
+            <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Active this User?</h5>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+            <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+            <a href="" type="button" id="active" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #3CB179;">Yes, Active</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- delete user -->
+  <div class="modal fade" id="deleteuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded text-center p-3">
+      <div class="col-lg-12 text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <img src="images/delete.png" alt="blockuser" class="img-fluid mt-5" />
+      </div>
+        <div class="text-center d-flex flex-row mt-5">
+            <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Delete this User?</h5>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+            <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+            <a href="" type="button" id="delete" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #FF3F3F;">Yes, Delete</a>
+        </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- update -->
+  <div class="modal fade" id="updateModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class=" mt-2 ml-2">
+          <h5 class="modal-title w-100" id="exampleModalLongTitle">Edit Profile</h5>
+        </div>
+        <div class="modal-body">
+          <div class="tabbable">
+            <!-- Only required for left/right tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active pull-right mr-2"><a href="#tab1" data-toggle="tab">Setting</a></li>
+              <li class="pull-right ml-2"><a href="#tab2" data-toggle="tab">Contact Us</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab1">
+                <br>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Notification</label>
+                    <label class="switch d-flex " for="checkbox">
+                      <input type="checkbox" checked id="checkbox" />
+                      <div class="slider round"></div>
+                    </label> 
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Notification</label>
+                    <label class="switch d-flex " for="checkbox">
+                      <input type="checkbox" checked id="checkbox" />
+                      <div class="slider round"></div>
+                    </label> 
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Notification</label>
+                    <label class="switch d-flex " for="checkbox">
+                      <input type="checkbox" checked id="checkbox" />
+                      <div class="slider round"></div>
+                    </label> 
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Notification</label>
+                    <label class="switch d-flex " for="checkbox">
+                      <input type="checkbox" checked id="checkbox" />
+                      <div class="slider round"></div>
+                    </label> 
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Notification</label>
+                    <label class="switch d-flex " for="checkbox">
+                      <input type="checkbox" checked id="checkbox" />
+                      <div class="slider round"></div>
+                    </label> 
+                </div>
+              </div>
+              <div class="tab-pane" id="tab2">
+                <br>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Phone Number</label>
+                  <label class="form-check-label">+92 312 999999</label>
+                    
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Email</label>
+                  <label class="form-check-label">abcd@gmail.com</label>
+                    
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <label class="form-check-label">Address</label>
+                  <label class="form-check-label">Example Address</label>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+
+        // is open by default
+        $('#successModal').modal('show');
+
+      $("#changeButton").click(function() {
+        $("#updateModal").modal();
+      });
+      $('.editable ul').on('click', 'li', function() {
+        if ($(this).hasClass('li_selected')) {
+          $(this).removeClass('li_selected');
+        } else {
+          $(this).addClass('li_selected');
+        }
+      });
+
+      $('#deleteuser').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var deleteID = button.attr('data-id');
+        console.log('deleteID: ', deleteID);
+        var modal = $(this)
+        modal.find('#delete').attr('href', `/delete?userID=${deleteID}`);
+      })
+
+      $('#suspenduser').on('show.bs.modal', function(event){
+        console.log('suspend');
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var suspendID = button.attr('data-id');
+        console.log('suspendID: ', suspendID);
+        var modal = $(this)
+        modal.find('#suspend').attr('href', `/suspend?userID=${suspendID}`);
+      })
+
+      $('#activeuser').on('show.bs.modal', function(event){
+        console.log('active');
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var activeID = button.attr('data-id');
+        console.log('activeID: ', activeID);
+        var modal = $(this)
+        modal.find('#active').attr('href', `/active?userID=${activeID}`);
+      })
+
+      $('#blockuser').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var blockID = button.attr('data-id');
+        console.log('blockID: ', blockID);
+        var modal = $(this)
+        modal.find('#block').attr('href', `/block?userID=${blockID}`);
+      })
+
+      $('#unblockuser').on('show.bs.modal', function(event){
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var blockID = button.attr('data-id');
+        console.log('blockID: ', blockID);
+        var modal = $(this)
+        modal.find('#unblock').attr('href', `/unblock?userID=${blockID}`);
+      })
+      
+    });
+  </script>
+
+  </html>

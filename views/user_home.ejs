@@ -1,0 +1,269 @@
+<html lang="en">
+    <head>
+        <title>One 1000</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/user.css">
+		<!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+	
+    </head>
+    <body>
+        <!-- include header -->
+        <nav class="navbar sticky-top navbar-expand-lg white">
+            <!-- Navbar brand -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link p-0 brand" href="/home">
+                        <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="90">
+                    </a>
+                </li>
+            </ul>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <i class="fas fa-bars"></i>
+            </button>
+        
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-5">
+                    <% if (sess_email){ %>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/userDashboard">Dashboard</a>
+                        </li>
+                    <% } %>
+                    <li class="nav-item">
+                        <a class="nav-link active text-dark" href="/home">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/webinar">Webinar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/onlinetraining">Online Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/about">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/contact">Contact us</a>
+                    </li>
+                </ul>
+                <!-- Links -->
+        
+                <!-- Collapsible content -->
+                <% if (!sess_email){ %>
+                <a href="/login" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Login</a>
+                <% }  else { %>
+                    <a href="/logout" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Logout</a>
+                <% } %>
+            </div>
+        </nav>
+        <!-- /include header -->
+
+        <div class="container container-bg">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-5 custom-col">
+                    <div>
+                        <h2 style="font-weight: bold; margin: 0;">
+                            <span class="span-bg ml-n3">We can help</span> 
+                            <span>you acheive</span>
+                            <span class="d-flex">excellence
+                                <img src="images/writing-0.5.png" class="z-depth-0 ml-n2 mt-2 img-fluid" alt="avatar image">
+                            </span>
+                        </h2>
+                    </div>
+                    
+                    <div class="row">
+                        <h6 class="h6-header mt-5">WES is a worldwide provider of online training courses. We provide a wide range of Social Services, Business, Government and Life Skills courses.</h6>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-6">
+                            <div class="text-center mb-4">
+                                <a href="/contact" class="btn btn-outline-primary btn-block text-center" style="color:#017EBE; border-radius: 15px;" name="contact">Contact Us</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <% if (!sess_email){ %>
+                            <div class="text-center mb-4">
+                                <a href="/signup" class="btn text-center btn-block" style="color: white; border-radius: 15px; background: #017EBE;" name="getstarted">Get Started</a>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-header-img">
+                    <div class=" text-right header-img-div">
+                        <img src="images/Rectangle-16.png" class="z-depth-0 header-img img-fluid" alt="avatar image">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Logos -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-4">
+                    <img src="images/004_Noth_York-1.png" class="z-depth-0 img-fluid" alt="avatar image">
+
+                </div>
+                <div class="col-lg-2 col-4">
+                    <img src="images/004_Noth_York-2.png" class="z-depth-0 img-fluid" alt="avatar image">
+
+                </div>
+                <div class="col-lg-2 col-4">
+                    <img src="images/004_Noth_York-3.png" class="z-depth-0 img-fluid" alt="avatar image">
+
+                </div>
+                <div class="col-lg-2 col-4">
+                    <img src="images/004_Noth_York-1.png" class="z-depth-0 img-fluid" alt="avatar image">
+
+                </div>
+                <div class="col-lg-2 col-4">
+                    <img src="images/004_Noth_York-2.png" class="z-depth-0 img-fluid" alt="avatar image">
+
+                </div>
+                <div class="col-lg-2 col-4">
+                    <img src="images/004_Noth_York-3.png" class="z-depth-0 img-fluid" alt="avatar image">
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Offerings -->
+
+        <div class="container mt-5 mb-5">
+            <div>
+                <h5 class="font-weight-bold"><strong>What are we offering.</strong></h5>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 card-body">
+                    <img class="img-fluid card-img-top offerings-img" src="images/Rectangle-5.png" alt="offerings-image" />
+                    <div class="p-1 mt-1">
+                        <h6 class="font-weight-bold mb-3">WES Training & Consulting</h6>
+                        <p class="small">WES Training and Consulting is an enterprise with expertise on Social Service, Business, Government, and Life skill topics. Services have been provided for clients from Canada, Bangladesh, Ghana, Uganda, Guinea, Kenya and Ethiopia.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 card-body">
+                    <img class="img-fluid card-img-top offerings-img" src="images/Rectangle-17b.png" alt="offerings-image" />
+                    <div class="p-1 mt-1">
+                        <h6 class="font-weight-bold mb-3">WES Services</h6>
+                        <p class="small">WES Training and Consulting services offered include: curriculum development, change management, P3, personal development, and project management for, companies, individuals and officials from various countries.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 card-body">
+                    <img class="img-fluid card-img-top offerings-img" src="images/Rectangle-5b.png" alt="offerings-image" />
+                    <div class="p-1 mt-1">
+                        <h6 class="font-weight-bold mb-3">WES eLearning services</h6>
+                        <p class="small">WES provides practical and interactive online courses for individuals, teams, and companies. View current available courses at WES.ca, or message us to have a course built for you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- last section -->
+        <div class="container last-container">
+            <div class="row">
+                <div class="col-lg-12 m-auto">
+                    <div class="row">
+                         <div class="col-lg-6 last-img-div">
+                             <img class="img-fluid last-img-1" src="images/Rectangle-6a.png" alt="last-image" />
+                             <img class="img-fluid last-img-2" src="images/Rectangle-15a.png" alt="last-image" />
+                         </div>
+                        <div class="col-lg-6 ml-5">
+                            <div class="card-body">
+                                <h6 class="text-uppercase text-blue small mt-2"><strong>online learning</strong></h6>
+                                <h6 class="font-weight-bold lead line-height mb-2"><strong>Effective communications and project strategies for the one or 1000!</strong></h6>
+                                <p class="small">Whether it's for you to develop as a leader or to improve your teams results, we have a range of online learning services that include  webinars, workshops and  e-courses.<br/> 
+
+                                    We have provided numerous trainings for multiple organizations in the government, non-profit, academic and corporate industries.<br/>
+                                    
+                                    Our online e-courses focus on communicating effectively. <br/>
+                                    These include:<br/>
+                                    Effective Communication Foundations, Effective Communication- Community Engagement, Effective Communication- Facilitation. <br/>
+                                    
+                                    These courses are able to assist with personal development  to strengthen your resume and skills or can be applied to a team looking to improve their communication with each other. Come as yourself or come as a team. There is something for everyone!</p>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Footer -->
+         <footer id ="footer" class="font-small text-white pt-4">
+
+            <!-- Footer Elements -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="nav-link p-0" href="/home">
+                            <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="140">
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white mb-3">Quick links</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a class="text-white-50 small" href="/home">Home</a></li>
+                            <li><a class="text-white-50 small" href="/about">About</a></li>
+                            <li><a class="text-white-50 small" href="/webinar">Webinar</a></li>
+                            <li><a class="text-white-50 small" href="/onlinetraining">Online Training</a></li>
+                            <li><a class="text-white-50 small" href="/contact">Contact us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white mb-3">Join me on social media</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.facebook.com/WESTrainingandConsulting"><i class="fa-brands fa-facebook-f mr-2"></i>WESTrainingandConsulting</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.instagram.com/WEStc/"><i class="fa-brands fa-instagram mr-2"></i>WEStc</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.linkedin.com/in/WES/?originalSubdomain=ca"><i class="fa-brands fa-linkedin mr-2"></i>WES</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="WES"><i class="fa-brands fa-youtube mr-2"></i>WES Training & Consulting</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <!-- Copyright -->
+                    <div class="footer-copyright px-2 py-2">2022, Copyright, all rights reserved</div>
+                    <!-- Copyright -->
+                </div>
+        
+            
+            </div>
+            <!-- Footer Elements -->
+        
+            
+        </footer>
+        <!-- Footer -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.navbar ul a').click(function(event){
+                    console.log('click');
+                    //remove all pre-existing active classes
+                    $('.active').removeClass('active');
+            
+                    //add the active class to the link we clicked
+                    $(this).addClass('active');
+                });
+            });
+        </script>
+        
+    </body>
+    
+</html>

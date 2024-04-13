@@ -1,0 +1,171 @@
+<html lang="en">
+    <head>
+        <title>One 1000</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/user.css">
+		<!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+	
+    </head>
+    <body>
+        <!-- include header -->
+        <nav class="navbar sticky-top navbar-expand-lg white">
+            <!-- Navbar brand -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link p-0 brand" href="/home">
+                        <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="90">
+                    </a>
+                </li>
+            </ul>
+        
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+                aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-5">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/home">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/webinar">Webinar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/onlinetraining">Online Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-dark" href="/about">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/contact">Contact us</a>
+                    </li>
+                </ul>
+                <!-- Links -->
+
+                 <!-- Collapsible content -->
+                 <% if (!sess_email){ %>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a href="/signup" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Get Started</a>
+                    <% }  else { %>
+                        <a href="/logout" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Logout</a>
+                    <% } %>
+            </div>
+        </nav>
+        <!-- register form -->
+
+        <div class="container-fluid header-webinar">
+            <div class="row">
+                <div class="col-lg-6 ml-lg-5 col-12 mb-4">
+                    <h2 class="font-weight-bold" style="position: absolute; z-index: 2;">Adil Sher </h2>
+                    <img class="img-fluid ml-n5" style="width:35%!important; z-index: 1; position:relative; top:20; right:12;" src="images/Rectangle-10.png" alt="header-image" />
+                    <div class="row">
+                        <h6 class="h6-header mt-5">Helping individuals access education to achieve their full potential.
+                            
+                            Allowing people to get world-class degrees and work remotely, WES keeps you connected to the best educational experience.
+                            
+                            We are a global network of educators and institutions that strengthens local capacity to deliver quality education through the use of technology.
+                            Come to us for your education needs and discover a whole new way of experiencing education.
+                            We deliver one-of-a-kind, internet-based and self-paced educational programs to a global audience through our learning center infrastructure.
+                            We help students achieve their educational goals by providing expert guidance in the form of information, resources, tools and services that allow you to learn from home.
+                            WES provide testing and certification to give those who aspire to education the choice to learn at the convenience of their own home.
+                            <br><br>
+                            <strong>Course Areas: Communication, Business, Life Skills, IT</strong></h6>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-5 col-12 about-header-img custom-col">
+                    <img class="img-fluid about-img-1 mt-5" src="images/Rectangle-17.png" alt="header-image" />
+                    <img class="img-fluid about-img-2 mt-n5" style="width: 60%!important;" src="images/Untitled-11.png" alt="header-image" />
+                </div>
+            </div>
+        </div>
+
+        <!-- vision -->
+        <div class="container-fluid my-5 bg-image-vision">
+            <div class="row align-items-center">
+                <div class="col-lg-4">
+                    <img class="img-fluid mt-n5 vision-img" src="images/Rectangle-29.png" alt="vision-image" />
+                </div>
+                <div class="col-lg-8 text-white my-5">
+                    <h2 class="font-weight-bold mb-4">Vision Statement</h2>
+                    <p>WES believes individuals become stronger leaders, more competent and present team players, when armed and trained in core communication and project management skills. By utilizing a broad-based and culturally-savvy approach, WES’s courses engage individuals and teams to grow capacity and potential. WES online courses are suitable for those engaged in social impact, governance, charitable organizations, and diplomacy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission -->
+        <div class="container-fluid px-5 my-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 my-5">
+                    <h2 class="font-weight-bold mb-4">Mission Statement</h2>
+                    <p>WES has a mission to expand the ability of project teams and their leaders to achieve their goals through courses that develop core communication skills to expand capacity and simplify the process. </p>
+                </div>
+                <div class="col-lg-6 my-auto about-header-img">
+                    <img class="img-fluid about-img-1" src="images/Rectangle-31.png" alt="header-image" />
+                    <img class="img-fluid about-img-2" src="images/Rectangle-30.png" alt="header-image" />
+                </div>
+            </div>
+        </div>
+
+         <!-- Footer -->
+         <footer id ="footer" class="font-small text-white pt-4">
+
+             <!-- Footer Elements -->
+             <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="nav-link p-0" href="/home">
+                            <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="140">
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white mb-3">Quick links</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a class="text-white-50 small" href="/home">Home</a></li>
+                            <li><a class="text-white-50 small" href="/about">About</a></li>
+                            <li><a class="text-white-50 small" href="/signup">Get started</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white mb-3">Join me on social media</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.facebook.com/WESTrainingandConsulting"><i class="fa-brands fa-facebook-f mr-2"></i>WESTrainingandConsulting</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.instagram.com/WEStc/"><i class="fa-brands fa-instagram mr-2"></i>WEStc</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.linkedin.com/in/WES/?originalSubdomain=ca"><i class="fa-brands fa-linkedin mr-2"></i>WES</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="WES"><i class="fa-brands fa-youtube mr-2"></i>WES Training & Consulting</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <!-- Copyright -->
+                    <div class="footer-copyright px-2 py-2">2022, Copyright, all rights reserved</div>
+                    <!-- Copyright -->
+                </div>
+        
+            
+            </div>
+            <!-- Footer Elements -->
+        
+            
+        </footer>
+        <!-- Footer -->
+    </body>
+</html>

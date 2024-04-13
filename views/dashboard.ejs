@@ -1,0 +1,120 @@
+
+<!-- include header -->
+    <%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+      <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper bg-color py-5">
+    
+    <section class="content">
+      <div class="container">
+        <div class="row d-flex justify-content-between">
+          <div class="col-lg-4 my-2">
+              <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #F4AE1F; color: white;">
+                  <span>Courses Enrolled</span>
+                  <span class="lead"><%= total_enrolled_courses %></span>
+              </div>
+          </div>
+          <div class="col-lg-4 my-2">
+              <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #3CB179; color: white;">
+                  <span>Courses Completed</span>
+                  <span class="lead">0</span>
+              </div>
+          </div>
+          <div class="col-lg-4 my-2">
+              <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #017EBE; color: white;">
+                  <span>Live Webinars</span>
+                  <span class="lead"><%= webinars %></span>
+              </div>
+          </div>
+          
+      </div>
+        <div class="row">
+          <!-- <div class="col-lg-4 d-flex flex-column">
+            <h6 class="mt-3 mb-4 font-weight-bold">Recent Sales</h6>
+            <div class="p-2" style="background-color: #fff; border-radius:10px;">
+              <div class="row px-4 py-2 align-items-center mb-2">
+                <div class="row font-weight-bold mb-1 align-items-center">                
+                  <img class="img-fluid ml-3" style="width: 35px!important; height: 35px!important; max-height: 150px!important; max-width: 150px!important; padding: 8px; background-color: #3490FB; border-radius: 50%;" src="images/icons8_sales_96px.png">
+                </div>
+                <div class="d-flex flex-column ml-5">
+                  <div class="row small font-weight-bold">New Course is added</div>
+                  <h6 class="row text-muted" style="font-size:10px;">22 / 02 / 2022</h6>
+                </div>
+              </div>
+              <div class="row px-4 py-2 align-items-center mb-2">
+                <div class="row font-weight-bold mb-1 align-items-center">                
+                  <img class="img-fluid ml-3" style="width: 35px!important; height: 35px!important; max-height: 150px!important; max-width: 150px!important; padding: 8px; background-color: #3490FB; border-radius: 50%;" src="images/icons8_sales_96px.png">
+                </div>
+                <div class="d-flex flex-column ml-5">
+                  <div class="row small font-weight-bold">New Course is added</div>
+                  <h6 class="row text-muted" style="font-size:10px;">22 / 02 / 2022</h6>
+                </div>
+              </div>
+              <div class="row px-4 py-2 align-items-center mb-2">
+                <div class="row font-weight-bold mb-1 align-items-center">                
+                  <img class="img-fluid ml-3" style="width: 35px!important; height: 35px!important; max-height: 150px!important; max-width: 150px!important; padding: 8px; background-color: #3490FB; border-radius: 50%;" src="images/icons8_sales_96px.png">
+                </div>
+                <div class="d-flex flex-column ml-5">
+                  <div class="row small font-weight-bold">New Course is added</div>
+                  <h6 class="row text-muted" style="font-size:10px;">22 / 02 / 2022</h6>
+                </div>
+              </div>
+              <div class="row px-4 py-2 align-items-center mb-2">
+                <div class="row font-weight-bold mb-1 align-items-center">                
+                  <img class="img-fluid ml-3" style="width: 35px!important; height: 35px!important; max-height: 150px!important; max-width: 150px!important; padding: 8px; background-color: #3490FB; border-radius: 50%;" src="images/icons8_sales_96px.png">
+                </div>
+                <div class="d-flex flex-column ml-5">
+                  <div class="row small font-weight-bold">New Course is added</div>
+                  <h6 class="row text-muted" style="font-size:10px;">22 / 02 / 2022</h6>
+                </div>
+              </div>
+              <div class="row px-4 py-2 align-items-center mb-2">
+                <div class="row font-weight-bold mb-1 align-items-center">                
+                  <img class="img-fluid ml-3" style="width: 35px!important; height: 35px!important; max-height: 150px!important; max-width: 150px!important; padding: 8px; background-color: #3490FB; border-radius: 50%;" src="images/icons8_sales_96px.png">
+                </div>
+                <div class="d-flex flex-column ml-5">
+                  <div class="row small font-weight-bold">New Course is added</div>
+                  <h6 class="row text-muted" style="font-size:10px;">22 / 02 / 2022</h6>
+                </div>
+              </div>
+            </div>
+  
+            
+          </div> -->
+          <div class="col-lg-8">
+            <h6 class="mt-3 mb-4 font-weight-bold">Sales Activity</h6>
+              
+                <table class="table text-center">
+                  <thead style="background-color: #F3F3F3;">
+                    <tr style="border-radius: 15px!important;">
+                      <th>Course Name</th>
+                      <th>Student Enrolled</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody style="background-color: #fff; ">
+                    <% courses.forEach(function(course) { %>
+                    <tr>
+                      <td><%= course.course_title %></td>
+                      <td><%= course.enrolled_user %></td>
+                      <td><%= moment(course.createdAt).format('MMM DD YYYY') %></td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+  
+          </div>
+        </div>
+      </div>
+        
+    </section>
+
+    
+  </div>
+
+</div>
+<!-- ./wrapper -->
+</body>
+</html>

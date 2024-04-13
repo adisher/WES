@@ -1,0 +1,232 @@
+<html lang="en">
+    <head>
+        <title>One 1000</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+		<!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <!-- Bootstrap core CSS -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+	
+    </head>
+    <body>
+        <!-- include header -->
+    <nav class="navbar sticky-top navbar-expand-lg white">
+        <!-- Navbar brand -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link p-0 brand" href="/home">
+                    <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="90">
+                </a>
+            </li>
+        </ul>
+    
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars"></i>
+        </button>
+    
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-5">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/home">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/webinar">Webinar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/onlinetraining">Online Training</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/about">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/contact">Contact us</a>
+                </li>
+            </ul>
+            <!-- Links -->
+    
+           <!-- Collapsible content -->
+            <a class="nav-link" href="/login">Login</a>
+            <a href="/signup" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Get Started</a>
+        </div>
+    </nav>
+
+
+        <!-- register form -->
+
+        <div id="page-container">
+            <div id="content-wrap" class="my-5">
+             
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 m-auto">
+                        
+                        <div class="card mt-5">
+                            <form action="/api/register-user" method="POST">
+                
+                                <div class="card-title mt-5 ml-3">
+                                    <h3><strong>Create account</strong></h3>
+                                    <h6><strong>If you have account with us please login</strong></h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="card-body">
+                                                <input type="text" name="name" placeholder="Full Name" class="form-control my-2">
+                                                <input type="text" name="email" placeholder="Email" class="form-control my-2">
+                                                <input type="text" name="username" placeholder="User Name" class="form-control my-2">
+                                                <input type="password" name="pass" placeholder="Password " class="form-control mb-3">
+                                                <textarea name="interest" class="form-control" placeholder="Knowledge of areas interested in " id="exampleFormControlTextarea1" rows="5"></textarea>
+                                                <select name="learn" class="form-control my-2">
+                                                    <option value="" disabled selected hidden>How do you learn about us?</option>
+                                                    <option value="Internet">Internet</option>
+                                                    <option value="Friend">Friend</option>
+                                                </select>
+                                                <div class="item_more_link">
+                                                    <div class="custom-control custom-checkbox pb-3">
+                                                        <input type="checkbox" name="tos" class="custom-control-input form-control my-2" value="By Clicking this you will accept the terms and conditions of the company." id="tos">
+                                                        <label class="custom-control-label" for="tos">By Clicking this you will accept the terms and conditions of the company.</label>
+                                                    </div>
+                                                </div>
+                                                <div class="item_more_link">
+                                                    <div class="custom-control custom-checkbox pb-3">
+                                                        <input type="checkbox" name="newsletter" class="custom-control-input form-control my-2" value="Would you like to be added to our newsletter? " id="newsletter">
+                                                        <label class="custom-control-label" for="newsletter">Would you like to be added to our newsletter? </label>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="col-lg-6">
+                                        <div class="card-title ml-3 mt-n5">
+                                            <h4 class="py-1"><strong>Contact Details (Optional)</strong></h4>
+                                        </div>
+                                        <div class="card-body">
+                                            
+                                                <input type="text" name="company" placeholder="Company Name" class="form-control my-2">
+                                                <input type="text" name="job" placeholder="Job Title" class="form-control my-2">
+                                                <input type="text" name="department" placeholder="Department" class="form-control my-2">
+                                                <input type="text" name="address" placeholder="Address" class="form-control my-2">
+                                                <input type="text" name="city" placeholder="City" class="form-control my-2">
+                                                <input type="text" name="zip" placeholder="Zip Code" class="form-control my-2">
+                                                <input type="text" name="state" placeholder="State" class="form-control my-2">
+                                                <select name="location" class="form-control my-2">
+                                                    <option value="" disabled selected hidden>Select Country</option>
+                                                    <% countries.forEach(function(country) { %>
+                                                    <option value="<%= country.Name %>"><%= country.Name %></option>
+                                                    <%  }) %>
+                                                </select>
+                                                <input type="text" name="phone" placeholder="Phone Number" class="form-control mb-3">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg text-center mb-4">
+                                    <button type="submit" id="register" class="btn text-center w-50" data-toggle="modal" data-target="#exampleModal" style="color: white; border-radius: 15px; background: #017EBE;" name="signup" class="pt-3">Register</button>
+                                </div>
+                            </form>
+                                
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!-- content wrap -->
+         <!-- footer goes here -->
+          <!-- Footer -->
+        <footer id ="footer" class="font-small text-white pt-4">
+
+              <!-- Footer Elements -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a class="nav-link p-0" href="/home">
+                            <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="140">
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white mb-3">Quick links</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a class="text-white-50 small" href="/home">Home</a></li>
+                            <li><a class="text-white-50 small" href="/about">About</a></li>
+                            <li><a class="text-white-50 small" href="/signup">Get started</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="text-white mb-3">Join me on social media</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.facebook.com/WESTrainingandConsulting"><i class="fa-brands fa-facebook-f mr-2"></i>WESTrainingandConsulting</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.instagram.com/WEStc/"><i class="fa-brands fa-instagram mr-2"></i>WEStc</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="https://www.linkedin.com/in/WES/?originalSubdomain=ca"><i class="fa-brands fa-linkedin mr-2"></i>WES</a></li>
+                            <li><a class="text-white-50 small" target="_blank" href="WES"><i class="fa-brands fa-youtube mr-2"></i>WES Training & Consulting</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <!-- Copyright -->
+                    <div class="footer-copyright px-2 py-2">2022, Copyright, all rights reserved</div>
+                    <!-- Copyright -->
+                </div>
+        
+            
+            </div>
+            <!-- Footer Elements -->
+        
+            
+        </footer>
+        <!-- Footer -->
+     </div>
+     <% if (success != ''){ %>
+        <div class="modal fade py-3" id="successModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <i class="fa-solid fa-circle-check mr-2 text-success"></i>
+                        <%= success %>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% if (failed != ''){ %>
+            <div class="modal fade py-3" id="successModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <i class="fa-solid fa-circle-xmark mr-2 text-success"></i>
+                            <%= failed %>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+     <script type="text/javascript">
+        $(document).ready(function () {
+            // is open by default
+            $('#successModal').modal('show');
+    
+        });
+    </script>
+    </body>
+</html>

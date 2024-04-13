@@ -1,0 +1,68 @@
+
+<!-- include header -->
+<%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper bg-color py-5">
+
+        <section class="content">
+
+            <div class="py-2 container"
+                style="background-color:#fff; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h6 class="font-weight-bold pt-2 pl-2">Add Details</h6>
+            </div>
+
+            <div class="mt-1 py-4 container"
+                style="background-color:#fff;">
+                <form action="/api/audios" method="POST" enctype="multipart/form-data">
+                    <div class="row ml-2 mt-4">
+                        
+                        <div class="col-md-3 pl-3 pt-3 mt-2 inner-addon left-addon">
+                            <i class="errspan fa fa-cloud-arrow-up"></i>
+                            <input class="form-control input-sm text-center selectAudio" accept="audio/*" style="height: 8rem; width: 80%; background-color:#99dbffc2!important;" type="file" name="audio">
+                            <input class="form-control input-sm mt-1" style="width: 80%;" type="text" name="title" placeholder="Title">
+                        </div>
+                        
+                    </div>
+                    <div class="row ml-2 mt-5">
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-md" style="border-radius: 5px;width: 12rem; background-color: #3CB179; color: white;" name="add">Add Now</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- success modal -->
+            <% if (message != ''){ %>
+            <div class="modal fade py-3" id="successModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <i class="fa-solid fa-circle-xmark mr-2 text-danger"></i>
+                            <%= message %>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+            <!-- end success modal -->
+        </section>
+
+    </div>
+
+</div>
+<!-- ./wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        // is open by default
+        $('#successModal').modal('show');
+
+    });
+</script>
+</body>
+</html>

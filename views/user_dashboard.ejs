@@ -1,0 +1,292 @@
+<html lang="en">
+
+<head>
+    <title>One 1000</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="css/musicstyle.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.0/css/mdb.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg white">
+        <!-- Navbar brand -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link p-0 brand" href="/home">
+                    <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="90">
+                </a>
+            </li>
+        </ul>
+    
+        
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto ml-lg-5 pl-lg-5">
+                <li class="nav-item">
+                    <a class="nav-link active text-dark" href="/userDashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/home">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/webinar">Webinar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/onlinetraining">Online Training</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/about">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/contact">Contact us</a>
+                </li>
+            </ul>
+            <!-- Links -->
+
+            <!-- Collapsible content -->
+            
+            <!-- <a class="nav-link" href="signin.html">Login</a> -->
+            <!-- <a href="signup.html" style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3">Get Started</a> -->
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link brand" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="images/Ellipse-2.png" width="50" height="50" class="rounded-circle">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/user_profile">My Profile</a>
+                        <a class="dropdown-item text-danger" href="/logout">Log Out</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- home page -->
+
+    <!-- header -->
+
+    <div class="container-fluid header-webinar">
+        <h5 class="font-weight-bold mb-4">Summary</h5>
+        <div class="row d-flex justify-content-between">
+            <div class="col-lg-6 my-2">
+                <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #F4AE1F; color: white;">
+                    <span>Courses Enrolled</span>
+                    <span class="lead"><%=courses.length%> </span>
+                </div>
+            </div>
+            <div class="col-lg-6 my-2">
+                <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #3CB179; color: white;">
+                    <span>Courses Completed</span>
+                    <span class="lead">0</span>
+                </div>
+            </div>
+            <!-- <div class="col-lg-3 my-2">
+                <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #017EBE; color: white;">
+                    <span>Webinars Enrolled</span>
+                    <span class="lead">0</span>
+                </div>
+            </div>
+            <div class="col-lg-3 my-2">
+                <div class="p-4 d-flex flex-column justify-content-between" style="border-radius: 8px; background-color: #006CAD; color: white;">
+                    <span>Webinar Completed</span>
+                    <span class="lead">0</span>
+                </div>
+            </div> -->
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h5 class="font-weight-bold my-4">My Courses</h5>
+                <% if(courses.length != 0) {
+                    courses.forEach(function(course) { %>
+                <div class="col-lg-12 p-4 mb-3" style="border: 1px solid rgba(129, 72, 72, 0.300); border-radius: 8px;">
+                    <div class="row px-3">
+                        <div class="row align-items-center">
+                            <div class="col-2">
+                                <img class="img-fluid" style="border-radius: 8px;" src="images/Rectangle-16.png">
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="row font-weight-bold mb-1 align-items-center"><span class="mr-2"><%= course.course_title %></span>                
+                                    <img class="img-fluid ml-3" id="audioImg" style="cursor:pointer; width: 25px!important; height: 25px!important; max-height: 150px!important; max-width: 150px!important; padding: 4px; background-color: #c4c4c47c; border-radius: 50%;" src="images/icons8_audio_96px-2.png">
+                                    <img class="img-fluid ml-2" id="pdf" data-toggle="modal" data-target="#pdfModal" style="cursor:pointer; width: 25px!important; height: 25px!important; padding: 4px; background-color: #c4c4c47c; border-radius: 50%;" src="images/icons8_book_96px-1.png">
+                                    <audio id="audio">
+                                        <source src="uploads/1659706907849-Devil in the form of whore.mp3" type="audio/mpeg">
+                                    </audio>
+                                </div>
+                                <div class="row small text-muted mb-2">X3 Tech</div>
+                                <div class="row progress mb-1" style="height: 10px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 1%; background-color: #3CB179;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="row small mb-4" style="color: #3CB179">0% completed</span>
+                                <span class="row small"><%= course.createdAt %></span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="row d-flex justify-content-end">
+                                    <a href="/learning?id=<%= course._id %>" class="btn btn-block w-50 my-2" style="border-radius: 5px; background-color: #017EBE; color: white;">Continue Learning</a>
+                                </div>
+                                <div class="row d-flex justify-content-end align-items-center">
+                                    <span class="small mr-4" style="color:#F4AE1F">2 Attempts remaining</span>
+                                    <a href="/exam?id=<%= course._id %>" class="btn btn-block w-50 mb-1" style="border-radius: 5px; background-color: #F4AE1F; color: white;">Take Exam</a>
+                                </div>
+                                <div class="row d-flex justify-content-end">
+                                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-block w-50 my-2 disabled" style="border-radius: 5px; background-color: #E5E5E5;">View Certificate</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%  }) } else { %>
+                    <div>
+                        <h5>No course enrolled. Please enroll a course:</h5> 
+                        <a style="border-radius: 15px; background: #017EBE;" class="btn text-white btn-md ml-3" href="/onlinetraining">Enroll Now</a>
+                    </div> 
+                    <% } %>
+            </div>
+             <!-- Modal -->
+             <div class="modal custom-modal fade py-3" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content custom-modal">
+                        <div class="modal-header custom-modal">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="fa-stack">
+                                    <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                                    <i class="fa fa-xmark fa-stack-1x"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img class="img-fluid" src="images/Certificate-employee-1.png">
+                        </div>
+                        <div class="modal-footer custom-modal d-flex justify-content-around">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                                <i class="fa fa-download fa-stack-1x"></i>
+                            </span>
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                                <i class="fa fa-print fa-stack-1x"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PDF Modal -->
+             <!-- Modal -->
+             <div class="modal custom-modal fade py-3" id="pdfModal" tabindex="-1" role="dialog" aria-labelledby="pdfModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content custom-modal">
+                        <div class="modal-header custom-modal">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="fa-stack">
+                                    <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                                    <i class="fa fa-xmark fa-stack-1x"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <embed src="uploads/1659565933725-MA CV.pdf#toolbar=0" width="780" height="420" type="application/pdf">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="font-small text-white pt-4">
+
+         <!-- Footer Elements -->
+         <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <a class="nav-link p-0" href="/home">
+                        <img src="images/one1000-primary-logo.png" class="z-depth-0" alt="avatar image" height="140">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Quick links</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a class="text-white-50 small" href="/home">Home</a></li>
+                        <li><a class="text-white-50 small" href="/about">About</a></li>
+                        <li><a class="text-white-50 small" href="/signup">Get started</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="text-white mb-3">Join me on social media</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.facebook.com/WESTrainingandConsulting"><i class="fa-brands fa-facebook-f mr-2"></i>WESTrainingandConsulting</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.instagram.com/WEStc/"><i class="fa-brands fa-instagram mr-2"></i>WEStc</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="https://www.linkedin.com/in/WES/?originalSubdomain=ca"><i class="fa-brands fa-linkedin mr-2"></i>WES</a></li>
+                        <li><a class="text-white-50 small" target="_blank" href="WES"><i class="fa-brands fa-youtube mr-2"></i>WES Training & Consulting</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center">
+                <!-- Copyright -->
+                <div class="footer-copyright px-2 py-2">2022, Copyright, all rights reserved</div>
+                <!-- Copyright -->
+            </div>
+    
+        
+        </div>
+        <!-- Footer Elements -->
+
+
+    </footer>
+    <!-- Footer -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //audio
+        let audio = $('#audio')
+        let playState = 'play';
+
+        // if(playIconContainer){
+
+            $('#audioImg').on('click', () => {
+                console.log("play");
+                if(playState === 'play') {
+                    audio[0].play();
+                    
+                    playState = 'pause';
+                } else {
+                    audio[0].pause();
+                    
+                    playState = 'play';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

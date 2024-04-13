@@ -1,0 +1,218 @@
+
+<!-- include header -->
+<%- include ('include/sidebar') %>
+<!-- /include header -->
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper bg-color py-5">
+
+        <section class="content">
+    
+            <div class="py-2 container"
+                style="background-color:#fff; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                <h6 class="font-weight-bold pt-2 pl-2">Company Details</h6>
+            </div>
+    
+            <form action="/api/company/<%= company._id %>" method="POST">
+                <div class="mt-1 py-4 container" style="background-color:#fff;">
+                        <div class="row">
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <input type="hidden" id="companyID" value="<%= company._id %>" />
+                                <div class="form-group">
+                                    <label for="inputsm">Name</label>
+                                    <input class="form-control input-sm" type="text" name="name" value="<%= company.name %>" placeholder="Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Email</label>
+                                    <input class="form-control input-sm" id="inputsm" type="text" value="<%= company.email %>" name="email"
+                                        placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Company Name</label>
+                                    <input class="form-control input-sm" id="inputsm" type="text" value="<%= company.company_name %>" name="company"
+                                    placeholder="Company Name">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                                <div class="form-group">
+                                    <label for="inputsm">Location</label>
+                                    <input class="form-control input-sm" id="inputsm" type="text" value="<%= company.location %>" name="location"
+                                    placeholder="Country">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+    
+                <div class="mt-1 py-2 container" style="background-color:#fff;">
+                    <h6 class="font-weight-bold pt-2 pl-2">Courses</h6>
+                </div>
+                <div class="mt-1 py-4 container" style="background-color:#fff;">
+                    <div class="row" id="selectedCourse">
+                        <div class="col-lg-6 pl-5 pr-5 mt-3 mb-3">
+                            <div class="form-group">
+                                <label for="inputsm">Courses</label>
+                                <div id="selectCourseDiv">
+                                    <select id="selectCourse" class="form-control" aria-label="Default select example">
+                                        <option selected>Select</option>
+                                        <% courses.forEach(function(course) { %>
+                                        <option value="<%= course._id %>"><%= course.course_title %></option>
+                                        <%  }) %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-2 addplusicon" style="margin-top: 3.6rem;">
+                            <label><i class="fa-solid fa-circle-plus text-success"></i></label>
+                        </div> -->
+                        <div class="container ml-5 mr-5 pl-1 pr-1">
+                            <hr>
+                        </div>
+                        <% company.enrolled_courses.forEach(function(course) { %>
+                            <input type="hidden" name="course" value="" id="courseSelected"/>
+                        <div class="col-lg-3" style="margin-left: 2rem;">
+                            <div class="col-lg-12 p-3 mb-3" style="width: 200px; height: 79px; background-color: #A5E0FF; border-radius:5px;">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 ml-2">
+                                        <input type="hidden" id="preSelectedCourse" value="<%= course._id %>" />
+                                        <div class="row font-weight-bold mb-1 text-info">
+                                            <%= course.course_title %>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <h6 class="small text-muted ">
+                                                <%= course.course_credit %> credits
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="mb-5">
+                                        <a data-toggle="modal" data-target="#deleteuser" id="del-id" data-id="<%= course._id %>" href=""><i
+                                                class="fa fa-trash fa-stack-1x ml-5 mb-5"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+
+                        <!-- Selected courses goes here -->
+                        
+                        
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-lg-6 pl-4 pr-5 ml-3 mt-3 mb-3">
+                            <button class="btn" type="submit" style="border-radius: 5px;width: 12rem; background-color: #3CB179; color: white;">Edit Company</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    
+        </section>
+    
+    </div>
+
+</div>
+<!-- delete user -->
+<div class="modal fade" id="deleteuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content rounded text-center p-3">
+      <div class="col-lg-12 text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+        <img src="images/delete.png" alt="blockuser" class="img-fluid mt-5" />
+      </div>
+        <div class="text-center d-flex flex-row mt-5">
+            <h5 class="modal-title w-100" id="exampleModalLongTitle">Are you sure you want to Remove this Course?</h5>
+        </div>
+        <div class="col-lg-12 d-flex justify-content-center mt-5 mb-5">
+            <button type="button" class="btn btn-block w-50 m-1 close" data-dismiss="modal" aria-label="Close" style="border-radius: 15px; color:white; background: #017EBE;">No</button>
+            <a href="" type="button" id="delete" class="btn btn-block w-50 m-1" style="border-radius: 15px; color:white; background: #FF3F3F;">Yes, Remove</a>
+        </div>
+    </div>
+    </div>
+  </div>
+<!-- ./wrapper -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        // is open by default
+        $('#successModal').modal('show');
+
+        // dynamic select
+        $(".fa-circle-plus").click(function () {
+            $("#selectCourseDiv").append('<select id="selectCourse" class="form-control mt-3" aria-label="Default select example">'+
+                                        '<option selected>Select</option>'+
+                                        '<% courses.forEach(function(course) { %>'+
+                                        '<option value="<%= course._id %>"><%= course.course_title %></option>'+
+                                        '<%  }) %>'+
+                                    '</select>');
+        });
+
+
+        $('#selectCourse').change(function(event){ 
+            event.preventDefault();
+            var course = $(this).val();
+            console.log("crs: ", course);
+            var port = '<%= process.env.APP_PORT %>';
+            
+            var preSelectedCourse = $('#preSelectedCourse').val();
+            console.log("preSelectedCourse: ", preSelectedCourse);
+
+            $.ajax({
+                url : `http://localhost:`+port+`/api/courses`, 
+                method : "GET",
+                contentType: "application/json",
+                data : {id: course},
+
+                success: function (data, status, xhr) {
+                    console.log("data: ", data);
+                    console.log("data_id: ", data._id);
+                    if(preSelectedCourse !== data._id){
+
+                        $("#selectedCourse").append('<div class="col-lg-3" id="appendCourse" style="margin-left: 2rem;">'+
+                                            '<div class="col-lg-12 p-3 mb-3" style="width: 200px; height: 79px; background-color: #A5E0FF; border-radius:5px;">'+
+                                            '<div class="row align-items-center justify-content-between" >'+
+                                            '<div class="col-lg-6 col-md-6 col-sm-6 ml-2">'+
+                                            // '<input name="course[]" type="hidden" value="'+data._id+'"/>'+
+                                            '<div class="row font-weight-bold mb-1 text-info">'+data.course_title+'</div>'+
+                                            '<div class="row mb-2"><h6 class="small text-muted ">'+data.course_credit+' credits</h6></div></div>'+
+                                            '<div class="mb-5"><a id="courseID"><i class="fa fa-trash fa-stack-1x ml-5 mb-5"></i></a></div>'+
+                                            '</div></div></div>');
+                                                
+
+                                            $('#courseSelected').val(data._id);
+                                            $('#courseID').click(function (){
+                                                console.log('click')
+                                                $('#appendCourse').remove();
+                                            })
+                    }else {
+                        alert('Course Already Selected!')
+                    }
+                },
+                error: function (jqXhr, textStatus, errorMessage) {
+                    console.log("failed: ", errorMessage);
+                }
+            })   
+                    
+        });
+
+        
+        const deleteID = $('#del-id').attr('data-id');
+        
+
+        const companyID = $('#companyID').val();
+        console.log('deleteID: ', deleteID);
+        if(deleteID){
+            $('#delete').attr('href', `/delete?removeCourseID=${deleteID}&companyID=${companyID}`);
+
+        }
+
+
+    });
+</script>
+</body>
+</html>
